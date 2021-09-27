@@ -34,7 +34,7 @@ enemy_x = []
 enemy_y = []
 num_of_alliens = 10
 for a in range(num_of_alliens):
-    enemyImg.append(pygame.image.load("ufo.png"))
+    enemyImg.append(pygame.image.load("space-invaders.png"))
     enemyX.append(random.randint(0, 730))
     enemyY.append(random.randint(50, 169))
     enemy_x.append(6)
@@ -61,7 +61,7 @@ def game_over_text():
 bulletX = 0
 bulletY = 580
 bulletX_change = 0
-bulletY_change = 14
+bulletY_change = 8
 bullet_state = "ready"
 
 
@@ -100,9 +100,9 @@ while running:
         # if keystroke is being pressed
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                LEFT = -8
+                LEFT = -4
             if event.key == pygame.K_RIGHT:
-                LEFT = 8
+                LEFT = 4
             if event.key == pygame.K_a:
                 if bullet_state is "ready":
                     bullet_sound = mixer.Sound("laser.wav")
@@ -137,10 +137,10 @@ while running:
             break
         enemyX[a] += enemy_x[a]
         if enemyX[a] <= 0:
-            enemy_x[a] = 3
+            enemy_x[a] = 1
             enemyY[a] += enemy_y[a]
         elif enemyX[a] >= 732:
-            enemy_x[a] = -3
+            enemy_x[a] = -1
             enemyY[a] += enemy_y[a]
         shoot = isCollision(enemyX[a], enemyY[a], bulletX, bulletY)
         if shoot:
